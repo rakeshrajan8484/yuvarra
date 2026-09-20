@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --stone: #f3f5f4;
+  --ink: #161c1a;
+  --muted: #4a5551;
+  --hairline: #d5ddd8;
+  --sage: #3e5c54;
+  --surface: #ffffff;
+  --on-ink: #f3f5f4;
+  --on-ink-muted: #c5cdc8;
+  --chrome: 7rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-stone: var(--stone);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+  --color-sage: var(--sage);
+  --color-surface: var(--surface);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
+  --font-display: var(--font-schibsted);
+  --font-sans: var(--font-source);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--stone);
+  color: var(--ink);
+  scroll-padding-top: 7.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: var(--font-source), "Source Sans 3", sans-serif;
+}
+
+::selection {
+  background: var(--sage);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+  caret-color: var(--sage);
+}
+
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--sage) var(--stone);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 }
