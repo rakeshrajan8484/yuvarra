@@ -12,7 +12,9 @@ type TabId = (typeof aboutTabs)[number]["id"];
 
 function tabFromHash(hash: string): TabId | null {
   const value = hash.replace("#", "");
-  const match = aboutTabs.find((tab) => tab.hashes.includes(value));
+  const match = aboutTabs.find((tab) =>
+    tab.hashes.some((item) => item === value),
+  );
   return match?.id ?? null;
 }
 
